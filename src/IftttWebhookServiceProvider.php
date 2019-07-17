@@ -18,7 +18,7 @@ class IftttVoipServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('ifttt-voip.php'),
+                __DIR__.'/../config/config.php' => config_path('ifttt-webhook.php'),
             ], 'config');
 
             // Registering package commands.
@@ -34,7 +34,7 @@ class IftttVoipServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'ifttt-voip');
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'ifttt-webhook');
 
         // Register the main class to use with the facade
         $this->app->singleton('IftttVoip', function () {

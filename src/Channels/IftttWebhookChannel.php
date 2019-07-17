@@ -1,16 +1,16 @@
 <?php
 
-namespace Arimolzer\IftttVoip\Channels;
+namespace Arimolzer\IftttWebhook\Channels;
 
 use Arimolzer\IftttVoip\Exceptions\IftttVoipWebhookException;
-use Arimolzer\IftttVoip\IftttVoipFacade;
+use Arimolzer\IftttVoip\IftttVoip;
 use Illuminate\Notifications\Notification;
 
 /**
  * Class IftttVoipCall
  * @package Arimolzer\IftttVoip\Channels
  */
-class IftttVoipCall
+class IftttWebhookChannel
 {
     /** @var string $key */
     protected $key;
@@ -36,7 +36,7 @@ class IftttVoipCall
     public function send($notifiable, Notification $notification) : bool
     {
         // Return immediately if IFTTT Voip is disabled in config
-        if (!config('ifttt-voip.enabled')) {
+        if (!config('ifttt-webhook.enabled')) {
             return false;
         }
 
@@ -44,7 +44,7 @@ class IftttVoipCall
         $message = $notification->toIftttVoipCall($notifiable);
 
         try {
-            return IftttVoipFacade::call($message->param1, $message->param2, $message->param3, $message->event, $message->key);
+            return IftttVoip::call($message->param1, $message->param2, $message->param3, $message->event, $message->key);
         } catch (\Exception $e) {
             throw new IftttVoipWebhookException();
         }
@@ -70,7 +70,7 @@ class IftttVoipCall
      */
     public function setParams($param1 = null, $param2 = null, $param3 = null) : IftttVoipCall
     {
-        // Set the params - Currently limited to 3 by IFTTT
+        // Set the params - Currently limited to 3 by IFTTT.
         $this->param1 = $param1;
         $this->param2 = $param2;
         $this->param3 = $param3;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Arimolzer\IftttVoip;
+namespace Arimolzer\IftttWebhook\Facade;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Facade;
  * Class IftttVoipFacade
  * @package Arimolzer\IftttVoip
  */
-class IftttVoipFacade extends Facade
+class IftttWebhook extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -17,6 +17,6 @@ class IftttVoipFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'IftttVoip';
+        return 'IftttWebhook';
     }
 }

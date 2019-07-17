@@ -1,11 +1,11 @@
 {
-    "name": "arimolzer/ifttt-voip",
+    "name": "arimolzer/ifttt-webhook",
     "description": "",
     "keywords": [
         "arimolzer",
-        "ifttt-voip"
+        "ifttt-webhook"
     ],
-    "homepage": "https://github.com/arimolzer/ifttt-voip",
+    "homepage": "https://github.com/arimolzer/ifttt-webhook",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Arimolzer\\IftttVoip\\": "src"
+            "Arimolzer\\IftttWebhook\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Arimolzer\\IftttVoip\\Tests\\": "tests"
+            "Arimolzer\\IftttWebhook\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -44,10 +44,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Arimolzer\\IftttVoip\\IftttVoipServiceProvider"
+                "Arimolzer\\IftttWebhook\\IftttWebhookServiceProvider"
             ],
             "aliases": {
-                "IftttVoip": "Arimolzer\\IftttVoip\\IftttVoipFacade"
+                "IftttWebhook": "Arimolzer\\IftttWebhook\\IftttWebhookFacade"
             }
         }
     }

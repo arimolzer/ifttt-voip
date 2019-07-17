@@ -43,7 +43,11 @@ class ContactRequestSubmitted extends Notification
 }
 ```
 
-You can also make an asynchronous VOIP call via the `IftttVoip::call()` facade.
+You can also make an asynchronous VOIP call via the `IftttVoip::call()` facade. eg.
+
+```php
+IftttVoipFacade::call($message->param1, $message->param2, $message->param3, $message->event, $message->key);
+```
 
 ### Testing
 

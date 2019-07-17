@@ -2,15 +2,15 @@
 
 namespace Arimolzer\IftttVoip;
 
-use Arimolzer\IftttVoip\Exceptions\IftttVoipUndefinedKey;
-use Arimolzer\IftttVoip\Exceptions\IftttVoipWebhookException;
+use Arimolzer\IftttWebhook\Exceptions\IftttWebhookUndefinedKey;
+use Arimolzer\IftttWebhook\Exceptions\IftttWebhookException;
 use GuzzleHttp\Client;
 
 /**
- * Class IftttVoip
- * @package Arimolzer\IftttVoip
+ * Class IftttWebhook
+ * @package Arimolzer\IftttWebhook
  */
-class IftttVoip
+class IftttWebhookService
 {
     /** @var string */
     const IFTTT_WEBHOOK_URL = "https://maker.ifttt.com/trigger/%s/with/key/%s";
@@ -39,22 +39,27 @@ class IftttVoip
     public function __construct()
     {
         $this->client = new Client();
-        $this->event = config('ifttt-voip.credentials.default.event');
-        $this->key = config('ifttt-voip.credentials.default.key');
+        $this->event = config('ifttt-webhook.credentials.default.event');
+        $this->key = config('ifttt-webhook.credentials.default.key');
     }
 
     /**
-     * @param null $param1
-     * @param null $param2
-     * @param null $param3
-     * @param null $event
-     * @param null $key
+     * @param string $param1
+     * @param string $param2
+     * @param string $param3
+     * @param string $event
+     * @param string $key
      * @return bool
      * @throws IftttVoipUndefinedKey
      * @throws IftttVoipWebhookException
      */
-    public function call($param1 = null, $param2 = null, $param3 = null, $event = null, $key = null) : bool
-    {
+    public function call(
+        string $param1 = null,
+        string $param2 = null,
+        string $param3 = null,
+        string $event = null,
+        string $key = null
+    ) : bool {
         // Set the params to send to the IFTTT endpoint.
         $this->param1 = $param1;
         $this->param2 = $param2;
@@ -67,9 +72,9 @@ class IftttVoip
 
         // Throw exceptions if no key or event values are configured or provided.
         if (!$this->event) {
-            throw new IftttVoipWebhookException();
+            throw new IftttWebhookException();
         } elseif (!$this->key) {
-            throw new IftttVoipUndefinedKey();
+            throw new IftttWebhookUndefinedKey();
         }
 
         try {
@@ -82,11 +87,7 @@ class IftttVoip
                 ],
             ]);
         } catch (\GuzzleHttp\Exception\GuzzleException $e) {
-
-
-            dd($e);
-
-            throw new IftttVoipWebhookException();
+            throw new IftttWebhookException();
         }
 
         // If the response code is inside the HTTP status code success range return true, else false.

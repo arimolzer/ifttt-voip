@@ -1,14 +1,14 @@
 <?php
 
-namespace Arimolzer\IftttVoip\Exceptions;
+namespace Arimolzer\IftttWebhook\Exceptions;
 
 use Exception;
 
 /**
- * Class IftttVoipUndefinedKey
+ * Class IftttWebhookUndefinedKey
  * @package Arimolzer\IftttVoip\Exceptions
  */
-class IftttVoipUndefinedKey extends Exception
+class IftttWebhookUndefinedKey extends Exception
 {
     /** @var string $message */
     protected $message = 'A required IFTTT Webhook key has not been set.';
