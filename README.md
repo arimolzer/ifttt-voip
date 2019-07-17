@@ -1,22 +1,27 @@
 # Laravel notification channel for IFTTT VOIP Calls
 
-This package is designed to provide a custom Laravel notification channel and facade for sending VOIP messages via IFTTT.
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/arimolzer/ipstack-webhook.svg?style=flat-square)](https://packagist.org/packages/arimolzer/ipstack-webhook)
+[![Build Status](https://img.shields.io/travis/arimolzer/ipstack-webhook/master.svg?style=flat-square)](https://travis-ci.org/arimolzer/ipstack-webhook)
+[![Quality Score](https://img.shields.io/scrutinizer/g/arimolzer/ipstack-webhook.svg?style=flat-square)](https://scrutinizer-ci.com/g/arimolzer/ipstack-webhook)
+[![Total Downloads](https://img.shields.io/packagist/dt/arimolzer/ipstack-webhook.svg?style=flat-square)](https://packagist.org/packages/arimolzer/ipstack-webhook)
+
+This package is designed to provide a custom Laravel notification channel and facade for webhooks to IFTTT.
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require arimolzer/ifttt-voip
+composer require arimolzer/ifttt-webhook
 ```
 
 ## Usage
 
-A complete example of how to add the VOIP call channel to a notification is below:
+A complete example of how to add the IFTTT webhook channel to a notification is below:
 
 ``` php
 
-use Arimolzer\IftttVoip\Channels\IftttVoipCall;
+use Arimolzer\IftttWebhook\Channels\IftttWebhookChannel;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 
@@ -26,12 +31,12 @@ class ContactRequestSubmitted extends Notification
 
     public function via($notifiable)
     {
-        return [IftttVoipCall::class];
+        return [IftttWebhookChannel::class];
     }
     
-    public function toIftttVoipCall($notifiable) : IftttVoipCall
+    public function toIftttWebhookChannel($notifiable) : IftttWebhookChannel
     {
-        return (new IftttVoipCall)
+        return (new IftttWebhookChannel)
             ->setKey(env('IFTTT_VOIP_WEBHOOK_KEY'))
             ->setEvent(env('IFTTT_VOIP_WEBHOOK_EVENT'))
             ->setParams(
@@ -43,16 +48,10 @@ class ContactRequestSubmitted extends Notification
 }
 ```
 
-You can also make an asynchronous VOIP call via the `IftttVoip::call()` facade. eg.
+You can also make an asynchronous webhook call via the `IftttWebhook::get()` facade. eg.
 
 ```php
-IftttVoipFacade::call($message->param1, $message->param2, $message->param3, $message->event, $message->key);
-```
-
-### Testing
-
-``` bash
-composer test
+IftttWebhookFacade::get($message->param1, $message->param2, $message->param3, $message->event, $message->key);
 ```
 
 ### Changelog
