@@ -1,9 +1,9 @@
 # Laravel notification channel for IFTTT VOIP Calls
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/arimolzer/ipstack-webhook.svg?style=flat-square)](https://packagist.org/packages/arimolzer/ipstack-webhook)
-[![Build Status](https://img.shields.io/travis/arimolzer/ipstack-webhook/master.svg?style=flat-square)](https://travis-ci.org/arimolzer/ipstack-webhook)
-[![Quality Score](https://img.shields.io/scrutinizer/g/arimolzer/ipstack-webhook.svg?style=flat-square)](https://scrutinizer-ci.com/g/arimolzer/ipstack-webhook)
-[![Total Downloads](https://img.shields.io/packagist/dt/arimolzer/ipstack-webhook.svg?style=flat-square)](https://packagist.org/packages/arimolzer/ipstack-webhook)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/arimolzer/ifttt-webhook.svg?style=flat-square)](https://packagist.org/packages/arimolzer/ifttt-webhook)
+[![Build Status](https://img.shields.io/travis/arimolzer/ifttt-webhook/master.svg?style=flat-square)](https://travis-ci.org/arimolzer/ifttt-webhook)
+[![Quality Score](https://img.shields.io/scrutinizer/g/arimolzer/ifttt-webhook.svg?style=flat-square)](https://scrutinizer-ci.com/g/arimolzer/ifttt-webhook)
+[![Total Downloads](https://img.shields.io/packagist/dt/arimolzer/ifttt-webhook.svg?style=flat-square)](https://packagist.org/packages/arimolzer/ifttt-webhook)
 
 This package is designed to provide a custom Laravel notification channel and facade for webhooks to IFTTT.
 
