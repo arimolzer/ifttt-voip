@@ -44,14 +44,14 @@ class IftttWebhookService
     }
 
     /**
-     * @param string $param1
-     * @param string $param2
-     * @param string $param3
-     * @param string $event
-     * @param string $key
+     * @param string|null $param1
+     * @param string|null $param2
+     * @param string|null $param3
+     * @param string|null $event
+     * @param string|null $key
      * @return bool
-     * @throws IftttVoipUndefinedKey
-     * @throws IftttVoipWebhookException
+     * @throws IftttWebhookException
+     * @throws IftttWebhookUndefinedKey
      */
     public function call(
         string $param1 = null,
