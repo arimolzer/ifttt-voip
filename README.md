@@ -51,7 +51,7 @@ class ContactRequestSubmitted extends Notification
 You can also make an asynchronous webhook call via the `IftttWebhook::get()` facade. eg.
 
 ```php
-IftttWebhookFacade::get($message->param1, $message->param2, $message->param3, $message->event, $message->key);
+IftttWebhook::get($message->param1, $message->param2, $message->param3, $message->event, $message->key);
 ```
 
 ### Changelog

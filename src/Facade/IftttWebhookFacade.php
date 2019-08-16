@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Facade;
  * Class IftttWebhook
  * @package Arimolzer\IftttWebhook
  */
-class IftttWebhook extends Facade
+class IftttWebhookFacade extends Facade
 {
     /**
      * Get the registered name of the component.

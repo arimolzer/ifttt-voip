@@ -3,7 +3,6 @@
 namespace Arimolzer\IftttWebhook\Channels;
 
 use Arimolzer\IftttWebhook\Exceptions\IftttWebhookException;
-use Arimolzer\IftttWebhook\Facade\IftttWebhook;
 use Illuminate\Notifications\Notification;
 
 /**

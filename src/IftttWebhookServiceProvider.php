@@ -2,7 +2,6 @@
 
 namespace Arimolzer\IftttWebhook;
 
-use Arimolzer\IftttWebhook\Facade\IftttWebhook;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -33,7 +32,7 @@ class IftttWebhookServiceProvider extends ServiceProvider
 
         // Register the main class to use with the facade
         $this->app->singleton('IftttWebhook', function () {
-            return new IftttWebhook;
+            return new IftttWebhookService;
         });
     }
 }
