@@ -10,7 +10,7 @@ return [
     // List of events
     'events' => [
 
-        // Default credentials for IFTTTVoipCall notifications
+        // Default credentials for IftttWebhook notifications
         'default' => env('IFTTT_WEBHOOK_DEFAULT_EVENT'),
 
         // Optionally, publish this config file and add more events below.

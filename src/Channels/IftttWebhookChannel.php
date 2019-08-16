@@ -2,13 +2,13 @@
 
 namespace Arimolzer\IftttWebhook\Channels;
 
-use Arimolzer\IftttVoip\Exceptions\IftttVoipWebhookException;
-use Arimolzer\IftttVoip\IftttVoip;
+use Arimolzer\IftttWebhook\Exceptions\IftttWebhookException;
+use Arimolzer\IftttWebhook\Facade\IftttWebhook;
 use Illuminate\Notifications\Notification;
 
 /**
- * Class IftttVoipCall
- * @package Arimolzer\IftttVoip\Channels
+ * Class IftttWebhookChannel
+ * @package Arimolzer\IftttWebhook\Channels
  */
 class IftttWebhookChannel
 {
@@ -31,7 +31,7 @@ class IftttWebhookChannel
      * @param $notifiable
      * @param Notification $notification
      * @return bool
-     * @throws \Arimolzer\IftttVoip\Exceptions\IftttVoipWebhookException
+     * @throws \Arimolzer\IftttWebhook\Exceptions\IftttWebhookException
      */
     public function send($notifiable, Notification $notification) : bool
     {
@@ -40,22 +40,22 @@ class IftttWebhookChannel
             return false;
         }
 
-        /** @var IftttVoipCall $message */
-        $message = $notification->toIftttVoipCall($notifiable);
+        /** @var IftttWebhookChannel $message */
+        $message = $notification->toIftttWebhook($notifiable);
 
         try {
-            return IftttVoip::call($message->param1, $message->param2, $message->param3, $message->event, $message->key);
+            return IftttWebhook::call($message->param1, $message->param2, $message->param3, $message->event, $message->key);
         } catch (\Exception $e) {
-            throw new IftttVoipWebhookException();
+            throw new IftttWebhookException();
         }
     }
 
     /**
      * @param string $key
      * @param string $event
-     * @return IftttVoipCall
+     * @return IftttWebhookChannel $this
      */
-    public function setConfig(string $key, string $event) : IftttVoipCall
+    public function setConfig(string $key, string $event) : IftttWebhookChannel
     {
         $this->key = $key;
         $this->event = $event;
@@ -68,7 +68,7 @@ class IftttWebhookChannel
      * @param null $param3
      * @return $this
      */
-    public function setParams($param1 = null, $param2 = null, $param3 = null) : IftttVoipCall
+    public function setParams($param1 = null, $param2 = null, $param3 = null) : IftttWebhookChannel
     {
         // Set the params - Currently limited to 3 by IFTTT.
         $this->param1 = $param1;

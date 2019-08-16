@@ -5,8 +5,8 @@ namespace Arimolzer\IftttWebhook\Facade;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class IftttVoipFacade
- * @package Arimolzer\IftttVoip
+ * Class IftttWebhook
+ * @package Arimolzer\IftttWebhook
  */
 class IftttWebhook extends Facade
 {

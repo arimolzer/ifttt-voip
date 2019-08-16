@@ -1,15 +1,15 @@
 <?php
 
-namespace Arimolzer\IftttVoip;
+namespace Arimolzer\IftttWebhook;
 
-use Arimolzer\IftttVoip\Commands\TestIftttVoipCall;
+use Arimolzer\IftttWebhook\Facade\IftttWebhook;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class IftttVoipServiceProvider
- * @package Arimolzer\IftttVoip
+ * Class IftttWebhookServiceProvider
+ * @package Arimolzer\IftttWebhook
  */
-class IftttVoipServiceProvider extends ServiceProvider
+class IftttWebhookServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -20,11 +20,6 @@ class IftttVoipServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../config/config.php' => config_path('ifttt-webhook.php'),
             ], 'config');
-
-            // Registering package commands.
-            $this->commands([
-                TestIftttVoipCall::class
-            ]);
         }
     }
 
@@ -37,8 +32,8 @@ class IftttVoipServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'ifttt-webhook');
 
         // Register the main class to use with the facade
-        $this->app->singleton('IftttVoip', function () {
-            return new IftttVoip;
+        $this->app->singleton('IftttWebhook', function () {
+            return new IftttWebhook;
         });
     }
 }

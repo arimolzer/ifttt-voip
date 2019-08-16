@@ -1,6 +1,6 @@
 <?php
 
-namespace Arimolzer\IftttVoip\Tests;
+namespace Arimolzer\IftttWebhook\Tests;
 
 use PHPUnit\Framework\TestCase;
 

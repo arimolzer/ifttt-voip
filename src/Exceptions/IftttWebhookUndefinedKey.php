@@ -6,7 +6,7 @@ use Exception;
 
 /**
  * Class IftttWebhookUndefinedKey
- * @package Arimolzer\IftttVoip\Exceptions
+ * @package Arimolzer\IftttWebhook\Exceptions
  */
 class IftttWebhookUndefinedKey extends Exception
 {

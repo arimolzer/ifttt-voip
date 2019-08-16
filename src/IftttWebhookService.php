@@ -1,6 +1,6 @@
 <?php
 
-namespace Arimolzer\IftttVoip;
+namespace Arimolzer\IftttWebhook;
 
 use Arimolzer\IftttWebhook\Exceptions\IftttWebhookUndefinedKey;
 use Arimolzer\IftttWebhook\Exceptions\IftttWebhookException;
@@ -34,7 +34,7 @@ class IftttWebhookService
     protected $client;
 
     /**
-     * IftttVoipCall constructor.
+     * IftttWebhookService constructor.
      */
     public function __construct()
     {
