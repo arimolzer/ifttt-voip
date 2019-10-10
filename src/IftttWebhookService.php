@@ -4,7 +4,6 @@ namespace Arimolzer\IftttWebhook;
 
 use Arimolzer\IftttWebhook\Exceptions\IftttWebhookUndefinedEvent;
 use Arimolzer\IftttWebhook\Exceptions\IftttWebhookUndefinedKey;
-use Arimolzer\IftttWebhook\Exceptions\IftttWebhookException;
 use GuzzleHttp\Client;
 
 /**
@@ -53,7 +52,7 @@ class IftttWebhookService
      * @return bool
      * @throws IftttWebhookUndefinedEvent
      * @throws IftttWebhookUndefinedKey
-     * @throws IftttWebhookException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function call(
         string $param1 = null,

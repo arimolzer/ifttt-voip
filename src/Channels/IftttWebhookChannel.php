@@ -2,7 +2,6 @@
 
 namespace Arimolzer\IftttWebhook\Channels;
 
-use Arimolzer\IftttWebhook\Exceptions\IftttWebhookException;
 use Illuminate\Notifications\Notification;
 
 /**
@@ -30,7 +29,6 @@ class IftttWebhookChannel
      * @param $notifiable
      * @param Notification $notification
      * @return bool
-     * @throws \Arimolzer\IftttWebhook\Exceptions\IftttWebhookException
      */
     public function send($notifiable, Notification $notification) : bool
     {
@@ -42,11 +40,7 @@ class IftttWebhookChannel
         /** @var IftttWebhookChannel $message */
         $message = $notification->toIftttWebhook($notifiable);
 
-        try {
-            return IftttWebhook::call($message->param1, $message->param2, $message->param3, $message->event, $message->key);
-        } catch (\Exception $e) {
-            throw new IftttWebhookException();
-        }
+        return IftttWebhook::call($message->param1, $message->param2, $message->param3, $message->event, $message->key);
     }
 
     /**

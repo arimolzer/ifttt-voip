@@ -2,8 +2,8 @@
 
 namespace Arimolzer\IftttWebhook\Tests;
 
-use Arimolzer\IftttWebhook\Exceptions\IftttWebhookException;
 use Arimolzer\IftttWebhook\Facade\IftttWebhookFacade;
+use GuzzleHttp\Exception\ClientException;
 
 /**
  * Class FacadeTest
@@ -29,7 +29,7 @@ class FacadeTest extends TestCase
     /** @test */
     public function testException(): void
     {
-        $this->expectException(IftttWebhookException::class);
+        $this->expectException(ClientException::class);
         IftttWebhookFacade::call("One", "Two", "Three", null, null);
     }
 }
