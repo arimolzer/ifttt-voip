@@ -2,6 +2,7 @@
 
 namespace Arimolzer\IftttWebhook;
 
+use Arimolzer\IftttWebhook\Exceptions\IftttWebhookUndefinedEvent;
 use Arimolzer\IftttWebhook\Exceptions\IftttWebhookUndefinedKey;
 use Arimolzer\IftttWebhook\Exceptions\IftttWebhookException;
 use GuzzleHttp\Client;
@@ -39,8 +40,8 @@ class IftttWebhookService
     public function __construct()
     {
         $this->client = new Client();
-        $this->event = config('ifttt-webhook.credentials.default.event');
-        $this->key = config('ifttt-webhook.credentials.default.key');
+        $this->event = config('ifttt-webhook.key');
+        $this->key = config('ifttt-webhook.events.default');
     }
 
     /**
@@ -50,8 +51,9 @@ class IftttWebhookService
      * @param string|null $event
      * @param string|null $key
      * @return bool
-     * @throws IftttWebhookException
+     * @throws IftttWebhookUndefinedEvent
      * @throws IftttWebhookUndefinedKey
+     * @throws IftttWebhookException
      */
     public function call(
         string $param1 = null,
@@ -70,9 +72,11 @@ class IftttWebhookService
         $this->event = $event ?? $this->event;
         $this->key = $key ?? $this->key;
 
+        dd($this->event, $this->key);
+
         // Throw exceptions if no key or event values are configured or provided.
         if (!$this->event) {
-            throw new IftttWebhookException();
+            throw new IftttWebhookUndefinedEvent();
         } elseif (!$this->key) {
             throw new IftttWebhookUndefinedKey();
         }
