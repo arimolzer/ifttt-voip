@@ -72,8 +72,6 @@ class IftttWebhookService
         $this->event = $event ?? $this->event;
         $this->key = $key ?? $this->key;
 
-        dd($this->event, $this->key);
-
         // Throw exceptions if no key or event values are configured or provided.
         if (!$this->event) {
             throw new IftttWebhookUndefinedEvent();
