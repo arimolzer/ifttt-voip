@@ -1,4 +1,4 @@
-<?phpC
+<?php
 
 namespace Arimolzer\IftttWebhook\Tests;
 
