@@ -79,18 +79,14 @@ class IftttWebhookService
             throw new IftttWebhookUndefinedKey();
         }
 
-        try {
-            // Trigger IFTTT workflow with
-            $response = $this->client->request('POST', $this->getUrl($this->event, $this->key), [
-                'json' => [
-                    'value1' => $this->param1,
-                    'value2' => $this->param2,
-                    'value3' => $this->param3,
-                ],
-            ]);
-        } catch (\GuzzleHttp\Exception\GuzzleException $e) {
-            throw new IftttWebhookException();
-        }
+        // Trigger IFTTT workflow with
+        $response = $this->client->request('POST', $this->getUrl($this->event, $this->key), [
+            'json' => [
+                'value1' => $this->param1,
+                'value2' => $this->param2,
+                'value3' => $this->param3,
+            ],
+        ]);
 
         // If the response code is inside the HTTP status code success range return true, else false.
         return $response->getStatusCode() > 200 && $response->getStatusCode() < 300;
